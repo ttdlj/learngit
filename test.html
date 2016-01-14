@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>test</title>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.css" />
+<style>
+*{margin:0;padding:0;}
+nav{padding:10px 0;box-shadow:0px 2px 7px #999;}
+#navbar li{cursor:pointer; padding:9px 10px;}
+#navbar ul{margin-top:8px;}
+.logo{font-size:30px; font-weight:bold;}
+.navbar-toggle .icon-bar{background:#999;}
+.navbar-toggle{border:1px solid #bbb}
+
+	.jumbo{background:linear-gradient(25deg, #223C65 1%, #2D5D96 35%, #4390BB 97%);padding:170px 0 100px; position:relative;}
+	#btn{background:#F4AA0B; margin-top:30px;color:#fff;padding:14px 32px;border-radius:4px; border:none;display:block;}
+	.row{color:#fff;}
+	.row h1{font-weight:700;font-size:44px;margin:0 0 15px;}
+	.row p{font-size:22px;font-weight:300;padding-right:60px;font-family:'proxima-nova', sans-serif;}
+	#snappa-preview-gif{width:100%;max-width:100%;box-shadow:rgba(0, 0, 0, 0.45) 0px 42px 98px 0px;border-radius:3px;border:4px solid rgba(255,255,255,0.4);}
+	#navbar-fixed-top{position:fixed;right:0;left:0;z-index:1030; background:#FFFFFF;}
+	.why{padding:80px 0 80px;border:1px solid rgba(0,0,0,0.12);}
+	.why h2{font-size:36px;text-align:center;}
+	.why p{font-size:20px;text-align:center;color:#888;margin-bottom:60px;font-family:'proxima-nova', sans-serif;}
+	.why .col-md-3 img{display:block; margin:0 auto; width:120px; height:120px; border:5px solid #FFFFFF; box-shadow:0 3px 6px rgba(0,0,0,0.12);border-radius:50%;}
+	.why .col-md-3 .type{text-align:center;}
+	.why .col-md-3 .type h4{font-size:22px;margin:40px 0 10px;font-weight:500;color:#333333;}
+	.why .col-md-3 .type p{color:#656565;padding-right:0;font-family:'proxima-nova', sans-serif;}
+	
+	
+	.templates{padding:80px 0 80px;border-bottom:1px solid rgba(0,0,0,0.12); background:#F3F5F7;}
+	.templates h2,.templates p{text-align:center;font-size:36px;}
+	.templates p{font-size:20px;color:#888;margin-bottom:60px;font-family:'proxima-nova', sans-serif;}
+	.subexp{max-width:600px; margin:0 auto;color:#656565}
+	.templates img{width:100%;display:block; margin-bottom:30px;}
+	
+	.features{padding:80px 0 80px;border-bottom:1px solid rgba(0,0,0,0.12);}
+	.features h2,.features p{text-align:center;font-size:36px;}
+	.features p{font-size:20px;color:#888;margin-bottom:60px;font-family:'proxima-nova', sans-serif;}
+	.features img{display:block; margin:0 auto 20px; max-height:42px;}
+	.features h4{font-weight:300;margin:0 0 80px;text-align:center;color:#333333;}
+	.more-features{background:#3498db;color:#fff;font-size:16px;padding:14px 40px;display:inline-block; margin:0 auto; border:1px solid #d6d6d6;border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.18)}
+	
+	
+	.beny{padding:80px 0 80px;border-bottom:1px solid rgba(0,0,0,0.12); background:#F3F5F7;}
+	.beny h2{margin:0 0 60px; text-align:center;}
+	.beny p{font-size:20px;color:#888;margin-bottom:60px;font-family:'proxima-nova', sans-serif;}
+	.beny img{display:block; margin:0 auto 20px; max-width:80%;}
+    .beny ul{max-width:720px;list-style-type:none;}
+	.beny ul li{margin-bottom:20px;font-weight:300;font-size:18px;color:#333333;font-family:'proxima-nova', sans-serif; padding-left:40px;}
+	
+	
+	.testimonial{background:linear-gradient(25deg, #223c65 1%,#2d5d96 30%,#4390bb 97%);color:#fff;padding:60px 0;}
+	.testimonial img{display:block; width:100px; height:100px;background-color:#1C658D;border:2px solid #fff;border-radius:50%;float:left; margin-right:35px;}
+	.testimonial .col-md-5 p{padding-top:30px;}
+	.testimonial .col-md-5{border-right:1px solid rgba(255,255,255,0.5);padding:20px 0;}
+	.testimonial .col-md-7 p{font-size:22px;font-family:'proxima-nova', sans-serif; }
+	
+	
+	.facts{padding:80px 0 80px;border-bottom:1px solid rgba(0,0,0,0.12);}
+	.facts h2,.facts p{text-align:center;font-size:36px;}
+	.facts p{font-size:20px;color:#888;margin-bottom:60px;font-family:'proxima-nova', sans-serif;}
+	.facts a{background:#F4AA0B}
+	
+	.row p.copy{float:left;color:#777777;padding:30px 0; font-size:14px;}
+	.links{float:right; list-style:none; }
+	.links li{float:left; font-size:14px; padding:30px 7px;}
+	.links li a{color:#777777;font-family:'proxima-nova', sans-serif;}
+	
+	
+	@media(max-width:767px){
+ .navbar-collapse ul.nav li {text-align: left;border-bottom: 1px solid rgba(0,0,0,0.12);line-height:30px;}
+ .logo{margin-left:30px;}
+ .navbar-collapse ul.nav{border-top: 1px solid rgba(0,0,0,0.12);}
+  #btn{margin:40px auto;}
+  .jumbo{padding:110px 0 60px;text-align:center;}
+  .beny img{max-width:160px;margin-bottom:40px;}
+  .testimonial img{float:none; margin:0 auto}
+  .testimonial .col-md-5 p{text-align:center;}
+  .testimonial .col-md-5{ border:none;}
+  .links li{float:none; text-align:center;padding:15px 7px;}
+  .row p.copy{float:none; text-align:center}
+  .links{float:none;}
+	}
+</style>
+</head>
+
+<body>
+<nav id="navbar-fixed-top">
+	<div class="container">
+		  <div class="navbar-header">
+				 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="logo">Xml</a>
+		  </div>
+		  <div id="navbar" class="navbar-collapse collapse">
+			 <ul class="nav navbar-nav navbar-right">
+				<li>home</li>
+				<li>state</li>
+				<li>images</li>
+				<li>css</li>
+				<li>javascript</li>
+			</ul>
+		 </div>
+    </div>
+</nav>
+
+
+<div class="jumbo">
+	<div class="container cta">
+		<div class="row">
+			<div class="col-md-5">
+				<h1>The easiest <br>graphic design tool <br>you'll ever use.</h1>
+				<p>Create amazing designs without the help of a graphic designer.</p>
+				<button type="button" id="btn">Design a Graphic Now</button>
+			</div>
+			<div class="col-md-7">
+				<video id="snappa-preview-gif" src="https://fat.gfycat.com/EnlightenedSpryGordonsetter.mp4" type="video/mp4" autoplay=""></video>
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="why">
+	<div class="container">
+		<h2>Limitless possibilities for engaging your audience</h2>
+		<p class="subexp">Snappa makes it easy to create any type of online graphic.</p>
+		<div class="row">
+			<div class="col-md-3">
+				<img src="../images/home_like.png" alt="">
+				<div class="type">
+					<h4>Social media</h4>
+					<p>Get noticed on social media and increase engagement with stunning graphics.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<img src="../images/home_megaphone.png" alt="">
+				<div class="type">
+					<h4>Social media</h4>
+					<p>Get noticed on social media and increase engagement with stunning graphics.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<img src="../images/home_letter.png" alt="">
+				<div class="type">
+					<h4>Social media</h4>
+					<p>Get noticed on social media and increase engagement with stunning graphics.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<img src="../images/home_imac.png" alt="">
+				<div class="type">
+					<h4>Social media</h4>
+					<p>Get noticed on social media and increase engagement with stunning graphics.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="templates">
+	<div class="container">
+		<h2>Hundreds of ready made templates</h2>
+		<p class="subexp">Don't want to design from scratch? No problem! Just choose from our growing collection of beautiful templates to get started in seconds.</p>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_1.jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_2.jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_3.jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_4.jpg"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_5.jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_6.jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_7.jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_8.jpg"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_1(2).jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_2(2).jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_3(2).jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_4(2).jpg"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_1(1).jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_2(1).jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_3(1).jpg"></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/snappa_4(1).jpg"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="features">
+	<div class="container">
+		<h2>Everything you need to create stunning graphics</h2>
+		<p class="subexp">Snappa combines the best visual assets with a fully-featured graphic editor.</p>
+	
+	<div class="row">
+				<div class="col-xs-6 col-sm-3">
+					<img src="../images/feature_image2.png">
+					<h4>10,000+ Photos & patterns</h4>
+				</div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/feature_pacman.png"><h4>10,000+ Photos & patterns</h4></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/feature_save.png"><h4>10,000+ Photos & patterns</h4></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/feature_share.png"><h4>10,000+ Photos & patterns</h4></div>
+	</div>
+			
+	<div class="row">
+				<div class="col-xs-6 col-sm-3"><img src="../images/feature_support.png"><h4>10,000+ Photos & patterns</h4></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/feature_upload.png"><h4>10,000+ Photos & patterns</h4></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/feature_wand.png"><h4>10,000+ Photos & patterns</h4></div>
+				<div class="col-xs-6 col-sm-3"><img src="../images/beny_graph.png"><h4>10,000+ Photos & patterns</h4></div>
+	</div>
+	 <div class="text-center">
+	 	<a class="btn more-features ">View all features</a>
+	</div>
+</div>
+</div>
+
+
+
+<div class="beny">
+	<div class="container">
+		<h2>How Snappa improves your engagement</h2>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-1 text-center">
+					<img src="../images/beny_graph.png">
+			</div>
+			<div class="col-md-7">
+				<ul>
+					<li>Having at least one image in your post leads to double the shares on Facebook and Twitter.</li>
+					<li>Adding images can boost your content credibility by 75%.</li>
+					<li>Tweets with images receive 150% more retweets.</li>
+					<li>Articles with relevant images get 94% more total views</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="testimonial">
+	<div class="container">
+		<div class="col-md-5">
+			<img src="../images/olga-testimonial.jpg">
+			<p>OLGA ANDRIENKO<br><span>Communications & Social Media Lead @ </span></p>
+		</div>
+		<div class="col-md-7">
+			<p>"Snappa is a must have tool for the non-designers who publish content online. It's super easy to use and has a nice set of templates, and despite its simplicity offers unlimited possibilities for creative minds."</p>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="facts">
+	<div class="container">
+		<h2>Over 80,000 images have been created using Snappa</h2>
+		<p class="subexp">It's so easy, you have to try it to believe it!</p>
+		 <div class="text-center">
+	 		<a class="btn more-features ">Get started for free</a>
+		</div>
+	</div>
+</div>
+
+
+
+<footer class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="copy">2015 - Snappa.io</p>
+			<ul class="links">
+				<li><a href="https://snappa.io/about">About</a></li>
+				<li><a href="https://snappa.io/contact">Contact</a></li>
+				<li><a href="https://blog.snappa.io/">Blog</a></li>
+				<li><a href="https://kb.snappa.io/">Knowledge Base</a></li>
+				<li><a href="https://snappa.io/terms">Terms &amp; Conditions</a></li>
+				<li><a href="https://snappa.io/privacy">Privacy Policy</a></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+</body>
+</html>
